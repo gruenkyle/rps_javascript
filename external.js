@@ -42,8 +42,38 @@ function roundPlay(selection, computerSelection){
         }
     }
     else {
-        return "invalid"
+        return "invalid";
     }
 
+
+    function game(){
+        let playerWins = 0;
+        let compWins = 0;
+
+        while (playerWins <= 5 || compWins <= 5){
+            let choice = prompt('Choose your hand! ');
+
+            let result = roundPlay(choice, getComputerChoice()); 
+
+            switch (result){
+                case "win":
+                    playerWins = playerWins + 1;
+                    alert('Win -- Current Score / Player: ' + playerWins + ' Computer Wins: ' + compWins);
+                case "lose":
+                    compWins = compWins + 1; 
+                    alert('Lose! -- Current Score / Player: ' + playerWins + ' Computer Wins: ' + compWins);
+                case "tie":
+                    alert('Tie! -- Current Score / Player: ' + playerWins + ' Computer Wins: ' + compWins);
+                default: 
+                    alert('No Contest! -- Current Score / Player: ' + playerWins + ' Computer Wins: ' + compWins);
+            }
+        }
+        if (playerWins > compWins){
+            alert('Final Score -- You Won!! / Player: ' + playerWins + ' Computer Wins: ' + compWins);
+        }
+        else {
+            alert('Final Score -- You Lost!! / Player: ' + playerWins + ' Computer Wins: ' + compWins);
+        }
+    }
 
 }
