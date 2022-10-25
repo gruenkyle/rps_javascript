@@ -50,22 +50,28 @@ function game(){
     let playerWins = 0;
     let compWins = 0;
 
-    while (playerWins <= 5 || compWins <= 5){
-        let choice = prompt('Choose your hand! ');
-
-        let result = roundPlay(choice, getComputerChoice()); 
+    while (playerWins < 5 && compWins < 5){
+        let choice = prompt('Choose your hand!');
+        let compChoice = getComputerChoice(); 
+    
+        let result = roundPlay(choice, compChoice); 
+        console.log(compChoice);
 
         switch (result){
             case "win":
                 playerWins = playerWins + 1;
                 alert('Win -- Current Score / Player: ' + playerWins + ' Computer Wins: ' + compWins);
+                break;
             case "lose":
                 compWins = compWins + 1; 
                 alert('Lose! -- Current Score / Player: ' + playerWins + ' Computer Wins: ' + compWins);
+                break; 
             case "tie":
                 alert('Tie! -- Current Score / Player: ' + playerWins + ' Computer Wins: ' + compWins);
+                break;
             default: 
                 alert('No Contest! -- Current Score / Player: ' + playerWins + ' Computer Wins: ' + compWins);
+                break; 
         }
     }
     if (playerWins > compWins){
