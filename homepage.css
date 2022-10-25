@@ -1,0 +1,49 @@
+*{
+    border: 0px solid black; 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+.welcome-container{
+    color: whitesmoke;
+    background-color: #1F2937;
+    font-size: 24px;
+
+    display:flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+}
+
+.welcome_message{
+
+    margin: 20px; 
+    
+    display: flex;  
+    justify-content: center; 
+}
+
+.intro_paragraph{
+    text-align: center;
+
+    display:flex; 
+    justify-content: center;  
+}
+
+.clickable_button{
+
+    background-color: #f44336;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+
+    display:flex;
+    justify-content: center; 
+    margin-top: 20px; 
+    margin-bottom: 20px;  
+    max-width: 150px; 
+}

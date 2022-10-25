@@ -1,5 +1,3 @@
-alert("I am Functioning!"); 
-
 //We Must Create our array variable first of course//
 const arr = ["rock", "paper", "scissors"];
 
