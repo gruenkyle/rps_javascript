@@ -10,34 +10,69 @@
 
 <html lang="en">
 
-    <!-- Gives webpage the information for background use -->
-    <head> 
-        <!-- Sets special character use within program -->
-        <meta charset="UTF-8">
-        
-        <!-- Sets the webpages title -->
-        <title>Rock Paper Scissors</title>
+<!-- Gives webpage the information for background use -->
 
-        <!--Links CSS File to Index-->
-        <link rel="stylesheet" href="homepage.css">
+<head>
+    <!-- Sets special character use within program -->
+    <meta charset="UTF-8">
 
-        <!--Links to JS File to Index-->
-        <script type="text/javascript" src="external.js"></script>
-    </head>
+    <!-- Sets the webpages title -->
+    <title>Rock Paper Scissors</title>
 
-    <body>
-        <script src="external.js"></script>
+    <!--Links CSS File to Index-->
+    <link rel="stylesheet" href="homepage.css">
 
-        <div class="welcome-container">
-            <div class="welcome_message">
-                <h1>Welcome to Rock Paper Scissors!</h1>
-            </div>
-            <div class="intro_paragraph">
-                <p>First to Five is claimed as the winner! 
-                <br>Check out the Console log to see more information!</p>
-            </div>
-            <div class="clickable_button">
-            <button onclick="game()">Click to Start</button></div>        
+    <!--Links to JS File to Index-->
+    <script type="text/javascript" src="external.js"></script>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="header-container">
+            <button class="start">Start Game</button>
+            <h2>Placement Scoreboard</h2>
+            <button class="reset">Reset Game</button>
         </div>
-    </body>
+    </div>
+
+    <div class="center">
+        <div class="play-container">
+            <button class="rock">Rock</button>
+            <button class="paper">Paper</button>
+            <button class="scissor">Scissor</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="winningtext">
+
+        </div>
+    </div>
+
+
+    <script>
+
+        const startButton = document.querySelector(".start");
+        const resetButton = document.querySelector(".reset"); 
+        const rockButton = document.querySelector(".rock");
+        const paperButton = document.querySelector(".paper");
+        const scissorButton = document.querySelector(".scissor");
+        
+
+
+        rockButton.addEventListener('click', ()=>{
+            console.log("Clicked"); 
+        });
+        paperButton.addEventListener('click', ()=>{
+            console.log("Clicked Paper"); 
+        });
+        scissorButton.addEventListener('click', ()=>{
+            console.log("Clicked Scissor"); 
+        });
+
+    </script>
+</body>
+
+
 </html>
