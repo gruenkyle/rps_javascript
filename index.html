@@ -10,34 +10,194 @@
 
 <html lang="en">
 
-    <!-- Gives webpage the information for background use -->
-    <head> 
-        <!-- Sets special character use within program -->
-        <meta charset="UTF-8">
-        
-        <!-- Sets the webpages title -->
-        <title>Rock Paper Scissors</title>
+<!-- Gives webpage the information for background use -->
 
-        <!--Links CSS File to Index-->
-        <link rel="stylesheet" href="homepage.css">
+<head>
+    <!-- Sets special character use within program -->
+    <meta charset="UTF-8">
 
-        <!--Links to JS File to Index-->
-        <script type="text/javascript" src="external.js"></script>
-    </head>
+    <!-- Sets the webpages title -->
+    <title>Rock Paper Scissors</title>
 
-    <body>
-        <script src="external.js"></script>
+    <!--Links CSS File to Index-->
+    <link rel="stylesheet" href="homepage.css">
 
-        <div class="welcome-container">
-            <div class="welcome_message">
-                <h1>Welcome to Rock Paper Scissors!</h1>
+    <!--Links to JS File to Index-->
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="header-container">
+            <button class="start">Start Game</button>
+            <div class="centerBox">
+                <h1>Scoreboard</h1>
+                <h2>0-0</h2>
             </div>
-            <div class="intro_paragraph">
-                <p>First to Five is claimed as the winner! 
-                <br>Check out the Console log to see more information!</p>
-            </div>
-            <div class="clickable_button">
-            <button onclick="game()">Click to Start</button></div>        
+            <button class="reset">Reset Game</button>
         </div>
-    </body>
+    </div>
+
+    <div class="center">
+        <div class="play-container">
+            <button class="rock">Rock</button>
+            <button class="paper">Paper</button>
+            <button class="scissor">Scissor</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h3>Start Game!</h3>
+        <h4></h4>
+    </div>
+
+
+    <script>
+
+        const startButton = document.querySelector(".start");
+        const resetButton = document.querySelector(".reset");
+        const rockButton = document.querySelector(".rock");
+        const paperButton = document.querySelector(".paper");
+        const scissorButton = document.querySelector(".scissor");
+
+        const placementScore = document.querySelector("h2");
+        const bottomMessage = document.querySelector("h3");
+        const finalScore = document.querySelector("h4");
+
+        const arr = ['rock', 'paper', 'scissor'];
+
+        startButton.addEventListener('click', () => {
+            console.log("game started");
+            game();
+        });
+
+        rockButton.addEventListener('click', () => {
+            console.log('Player Chose Rock');
+            game('rock');
+        })
+
+        paperButton.addEventListener('click', () => {
+            console.log("Player Chose Paper");
+            game('paper');
+        })
+
+        scissorButton.addEventListener('click', () => {
+            console.log("Player Chose Scissor");
+            game('scissor');
+        })
+
+        resetButton.addEventListener('click', () => {
+            console.log("Score was Reset");
+            reset();
+        })
+
+        startButton.addEventListener('click', () => {
+            console.log("Game was Started"); 
+            reset(); 
+        })
+
+        let playerScore = 0;
+        let compScore = 0;
+
+        function getComputerChoice() {
+            let random = arr[Math.floor(Math.random() * arr.length)];
+            return (random);
+        }
+
+        function roundPlay(playC, compC) {
+
+            console.log(compC);
+            if (playC == compC) {
+                console.log("Tie");
+                bottomMessage.textContent = (`Tie -> Player: ${playC} / Computer: ${compC}`)
+            }
+            else if (playC == 'rock') {
+                if (compC == 'paper') {
+                    console.log(`Loss -> Comp: ${compC} / Player: ${playC}`);
+                    bottomMessage.textContent = (`Loss -> Player: ${playC} Computer: ${compC}`)
+                    compScore += 1;
+                }
+                else {
+                    console.log(`Win -> Comp: ${compC} / Player: ${playC}`);
+                    bottomMessage.textContent = (`Win -> Player: ${playC} Computer: ${compC}`)
+                    playerScore += 1;
+                }
+            }
+            else if (playC == 'paper') {
+                if (compC == 'scissor') {
+                    console.log(`Loss -> Comp: ${compC} / Player: ${playC}`);
+                    bottomMessage.textContent = (`Loss -> Player: ${playC} Computer: ${compC}`)
+                    compScore += 1;
+                }
+                else {
+                    console.log(`Win -> Comp: ${compC} / Player: ${playC}`);
+                    bottomMessage.textContent = (`Win -> Player: ${playC} Computer: ${compC}`)
+                    playerScore += 1;
+                }
+            }
+            else if (playC == 'scissor') {
+                if (compC == 'rock') {
+
+                    console.log(`Loss -> Comp: ${compC} / Player: ${playC}`);
+                    bottomMessage.textContent = (`Loss -> Player: ${playC} Computer: ${compC}`)
+                    compScore += 1;
+                }
+                else {
+                    console.log(`Win -> Comp: ${compC} / Player: ${playC}`);
+                    bottomMessage.textContent = (`Win -> Player: ${playC} Computer: ${compC}`)
+                    playerScore += 1;
+                }
+            }
+            else {
+                console.log('Invalid Input');
+            }
+
+
+            updateText();
+
+        }
+
+        function updateText() {
+            placementScore.textContent = (`Player: ${playerScore} - Computer: ${compScore}`);
+        }
+
+        function game(playerChoice) {
+
+            let compChoice = getComputerChoice();
+            roundPlay(playerChoice, compChoice);
+
+            console.log(`Current Score -> Player: ${playerScore} Computer: ${compScore}`);
+
+            final(); 
+        }
+
+        function final() {
+            if (playerScore >= 5){
+                bottomMessage.textContent = ("Game Over! You Win!");
+                finalScore.textContent = (`Final Score -> Player: ${playerScore} / Computer: ${compScore}`); 
+
+                placementScore.textContent = ("Click Reset to Play Again"); 
+            }
+            else if (compScore >= 5){
+                bottomMessage.textContent = ("Game Over! You Lose!");
+                finalScore.textContent = (`Final Score -> Player: ${playerScore} / Computer: ${compScore}`);
+
+                placementScore.textContent = ("Click Reset to Try Again"); 
+            }
+        }
+
+        function reset() {
+            playerScore = 0;
+            compScore = 0;
+
+            bottomMessage.textContent = ("Start Game!");
+            placementScore.textContent = ("0-0");
+
+            finalScore.textContent = (""); 
+        }
+
+    </script>
+</body>
+
+
 </html>
